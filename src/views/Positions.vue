@@ -1,5 +1,6 @@
 <template>
   <div class="position-container">
+    <!-- //测试 -->
     <!-- 搜索和添加按钮 -->
     <el-row class="mb-4">
       <el-col :span="18">
@@ -82,6 +83,7 @@ import { Search, Plus } from '@element-plus/icons-vue'
 import { usePositionStore } from '@/stores/positions'
 import type { Position, IStatusStyle } from '@/types'
 import { ElMessageBox, ElMessage } from 'element-plus'
+import BasicSearchTable from "@/components/skills/BasicSearchTable.vue";
 
 const positionStore = usePositionStore()
 const { positions } = storeToRefs(positionStore)
