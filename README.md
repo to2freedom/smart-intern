@@ -57,7 +57,7 @@ A dashboard application designed to help job seekers track internship applicatio
 
 ### Prerequisites
 - Node.js ≥16.x
-- npm ≥8.x
+- pnpm ≥8.x
 
 ### Installation
 ```bash
@@ -66,7 +66,7 @@ git clone https://github.com/to2freedom/smart-intern.git
 
 # Install dependencies
 cd smart-intern
-npm install
+pnpm install
 
 # Start development server
-npm run dev
+pnpm run dev
