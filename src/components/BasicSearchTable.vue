@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, ref } from 'vue'
-import { $clone } from '@/utils/index.t'
+import { $clone } from '@/utils'
 import type { FormInstance } from 'element-plus'
-import { isDefined } from '@/utils/index.t'
+import { isDefined } from '@/utils'
 
 interface SharedFilter {
   label: string

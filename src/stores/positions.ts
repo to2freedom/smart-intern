@@ -1,9 +1,5 @@
 import { defineStore } from 'pinia'
-import type { PositionBase } from '@/types'
-
-export interface Position extends PositionBase {
-  id: string
-}
+import type { Position, PositionBase } from '@/types'
 
 export const usePositionStore = defineStore('positions', {
   state: () => ({
