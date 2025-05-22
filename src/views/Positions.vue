@@ -1,52 +1,5 @@
 <template>
   <div class="position-container">
-    <!-- //测试 -->
-    <!-- 搜索和添加按钮 -->
-    <!-- <el-row class="mb-4">
-      <el-col :span="18">
-        <el-input v-model="searchKey" placeholder="搜索公司或职位" clearable>
-          <template #prefix>
-            <el-icon>
-              <Search />
-            </el-icon>
-          </template>
-</el-input>
-</el-col>
-<el-col :span="6" class="text-right">
-  <el-button type="primary" @click="showAddDialog">
-    <el-icon class="mr-1">
-      <Plus />
-    </el-icon>
-    新增岗位
-  </el-button>
-</el-col>
-</el-row> -->
-
-    <!-- 岗位列表 -->
-    <!-- <el-table :data="filteredPositions" stripe style="width: 100%" v-loading="loading">
-      <el-table-column prop="company" label="公司" width="180" />
-      <el-table-column prop="position" label="职位" />
-      <el-table-column prop="status" label="状态" width="120">
-        <template #default="{ row }">
-          <el-tag :type="statusStyle[row.status].type" effect="dark">
-            {{ statusStyle[row.status].label }}
-          </el-tag>
-        </template>
-      </el-table-column>
-      <el-table-column prop="appliedDate" label="申请日期" width="120">
-        <template #default="{ row }">
-          {{ formatDate(row.appliedDate) }}
-        </template>
-      </el-table-column>
-      <el-table-column label="操作" width="150">
-        <template #default="{ row }">
-          <el-button size="small" @click="editPosition(row)">编辑</el-button>
-          <el-button size="small" type="danger" @click="deletePosition(row.id)">
-            删除
-          </el-button>
-        </template>
-      </el-table-column>
-    </el-table> -->
     <BasicSearchTable :fetching="false" v-model:search="search" :initial="initial" :columns="column"
       :data="filteredPositions" :pagination="pagination" :filters="filters" @search="onSearch" @reset="onReset">
       <template #actions>
