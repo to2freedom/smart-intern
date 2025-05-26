@@ -1,0 +1,73 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "title": "a title",
+      "views": 100
+    },
+    {
+      "id": "2",
+      "title": "another title",
+      "views": 200
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "text": "a comment about post 1",
+      "postId": "1"
+    },
+    {
+      "id": "2",
+      "text": "another comment about post 1",
+      "postId": "1"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "positions": [
+    {
+      "company": "1",
+      "position": "1",
+      "status": "pending",
+      "appliedDate": "2025-05-05",
+      "id": "1747151657043"
+    },
+    {
+      "company": "123",
+      "position": "234",
+      "status": "pending",
+      "appliedDate": "2025-05-13",
+      "id": "1747148150551"
+    },
+    {
+      "company": "1",
+      "position": "1",
+      "status": "interviewing",
+      "appliedDate": "2025-05-13",
+      "id": "1747120123842"
+    },
+    {
+      "company": "阿里",
+      "position": "123",
+      "status": "rejected",
+      "appliedDate": "2025-05-13",
+      "id": "1747109348679"
+    },
+    {
+      "id": "d35c",
+      "company": "测试111",
+      "position": "测试666",
+      "status": "pending",
+      "appliedDate": "2025-05-25"
+    },
+    {
+      "id": "5954",
+      "company": "测试555",
+      "position": "测试88",
+      "status": "pending",
+      "appliedDate": "2025-05-26"
+    }
+  ]
+}

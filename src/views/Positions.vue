@@ -1,6 +1,6 @@
 <template>
   <div class="position-container">
-    <BasicSearchTable :fetching="false" v-model:search="search" :initial="initial" :columns="column"
+    <BasicSearchTable :fetching="loading" v-model:search="search" :initial="initial" :columns="column"
       :data="filteredPositions" :pagination="pagination" :filters="filters" @search="onSearch" @reset="onReset">
       <template #actions>
         <div class="domain">
@@ -61,7 +61,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
 import { storeToRefs } from 'pinia'
-import { Search, Plus } from '@element-plus/icons-vue'
+import { Plus } from '@element-plus/icons-vue'
 import { usePositionStore } from '@/stores/positions'
 import type { Position, IStatusStyle } from '@/types'
 import { ElMessageBox, ElMessage } from 'element-plus'
@@ -70,13 +70,11 @@ import type { TableColumn, TableFilter } from '@/components/BasicSearchTable.vue
 
 
 const positionStore = usePositionStore()
-const { positions } = storeToRefs(positionStore)
+const { positions, loading } = storeToRefs(positionStore)
 
 // 状态定义
-const searchKey = ref({})
 const dialogVisible = ref(false)
 const isEdit = ref(false)
-const loading = ref(false)
 const formRef = ref()
 const currentId = ref<string | null>(null)
 
@@ -130,7 +128,7 @@ const form = ref<Omit<Position, 'id'>>({
   company: '',
   position: '',
   status: 'pending',
-  appliedDate: new Date().toISOString().split('T')[0]
+  appliedDate: new Date().toISOString().split('T')[0],
 })
 
 // 状态样式配置
@@ -149,11 +147,7 @@ const rules = {
 
 // 计算属性
 const filteredPositions = computed(() => {
-  return positions.value.filter(p =>
-    p.company.toLowerCase().includes(search.value.company.toLowerCase()) &&
-    p.position.toLowerCase().includes(search.value.position.toLowerCase()) &&
-    p.status.toLowerCase().includes(search.value.status.toLowerCase()) &&
-    p.appliedDate.toLowerCase().includes(search.value.appliedDate.toLowerCase()))
+  return positions.value
 })
 
 // 日期格式化
@@ -188,11 +182,11 @@ const submitForm = async () => {
   if (isEdit.value && currentId.value) {
     positionStore.updatePosition(currentId.value, form.value)
   } else {
-    positionStore.addPosition(form.value)
+    positionStore.createPosition(form.value)
   }
 
   dialogVisible.value = false
-  positionStore.loadPositions()
+  positionStore.fetchPositions()
 }
 
 // 删除岗位
@@ -209,13 +203,15 @@ const deletePosition = (id: string) => {
 
 //搜索岗位和重置搜索
 function onSearch(form: any) {
+  delete form._
+  positionStore.searchPositions(form)
 }
 
 function onReset() {
 }
 
 onMounted(() => {
-  positionStore.loadPositions()
+  positionStore.fetchPositions()
 })
 </script>
 
